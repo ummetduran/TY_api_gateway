@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ty_api_gateway/view/sign_up.dart';
+import 'package:ty_api_gateway/view/sing_in.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget{
       ),
       themeMode: ThemeMode.system,
       routes: {
-        '/SignUp' :(context) => SignUp(),
+        '/SignIn' :(context) => SignIn(),
 
       },
       home: Scaffold(
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget{
 
 
 
-          body: SignUp()
+          body: SignIn()
       ),
     );
   }

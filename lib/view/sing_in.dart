@@ -1,18 +1,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:ty_api_gateway/model/user.dart';
-import 'package:ty_api_gateway/view/sing_in.dart';
+import 'package:ty_api_gateway/view/admin_page.dart';
+import 'package:ty_api_gateway/view/sign_up.dart';
+import 'package:ty_api_gateway/view/user_homepage.dart';
 import 'package:ty_api_gateway/viewModel/user_signup.dart';
 
 
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class SignIn extends StatefulWidget {
+  const SignIn({Key? key}) : super(key: key);
 
   @override
-  _SignUpState createState() => _SignUpState();
+  _SignInState createState() => _SignInState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignInState extends State<SignIn> {
   final formKey = GlobalKey<FormState>();
   bool otoControl=false;
   User user = new User(fullName: '', email: '');
@@ -23,7 +25,7 @@ class _SignUpState extends State<SignUp> {
 
         backgroundColor: Colors.orangeAccent.shade200,
         centerTitle: true,
-        title: Text("E-Commerce", style: TextStyle(color: Colors.white),),
+        title: Text("E-Commerce Login", style: TextStyle(color: Colors.white),),
       ),
       body: Form(
         key: formKey,
@@ -64,10 +66,19 @@ class _SignUpState extends State<SignUp> {
                 onChanged: (deger) => user.email = deger,
               ),
 
-              SizedBox(height: 60),
+              SizedBox(height: 20),
 
               //user == null ? Container() : Text("The user ${user!.fullName} is created at ${user!.email}"),
-              
+              Padding(
+
+                padding: const EdgeInsets.only(),
+                child: TextButton(onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(
+                      builder: (context) => SignUp()));
+                }, child: Text("If you are not registered, click to register. ",
+                    style: TextStyle(color: Colors.orangeAccent)),),
+              ),
               SizedBox(
                 height: 50,
                 width: 200,
@@ -75,21 +86,23 @@ class _SignUpState extends State<SignUp> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
                     child: Text(
-                      "Sign Up",
+                      "Sign In",
                       style: TextStyle(fontSize: 20),
                     ),
                     // icon: Icon(Icons.save),
                     color: Colors.cyan,
                     textColor: Colors.white,
                     onPressed: () {
-                      debugPrint(" user name: ${user.fullName}");
-                      debugPrint("mail ${user.email}");
-                      
-                      UserSignUp add = new UserSignUp(user);
 
+                    if(user.fullName == "admin"){
                       Navigator.push(
                           context, MaterialPageRoute(
-                          builder: (context) => SignIn()));
+                          builder: (context) => AdminPage()));
+                    }else{Navigator.push(
+                        context, MaterialPageRoute(
+                        builder: (context) => UserHomePage()));
+
+                    }
 
                     }),
               ),
@@ -103,3 +116,4 @@ class _SignUpState extends State<SignUp> {
 
 
 }
+
