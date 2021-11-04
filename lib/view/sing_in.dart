@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:ty_api_gateway/enum/user_type.dart';
 import 'package:ty_api_gateway/model/user.dart';
 import 'package:ty_api_gateway/view/admin_page.dart';
 import 'package:ty_api_gateway/view/sign_up.dart';
