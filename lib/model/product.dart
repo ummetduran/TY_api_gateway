@@ -19,7 +19,7 @@ class Product {
   int productId;
   String productName;
   int quantity;
-  int price;
+  double price;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
     productId: json["productId"],

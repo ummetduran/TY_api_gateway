@@ -14,21 +14,13 @@ class _AdminPageState extends State<AdminPage> {
   @override
   void initState() {
     // TODO: implement initState
-    getProducts.getData();
+
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-            //  getProducts.getProducts()
-            ],
-          ),
-        ),
-      )
+      body: getProducts
     );
   }
 }
